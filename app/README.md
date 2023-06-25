@@ -15,4 +15,5 @@ Some file also give the face crop in specified directory name.
 * deepstream-face-egl-out.py  <uri1> [uri2] ... [uriN] <folder to save frames>
 
 
-* Change the primery and secondary comnfigration file path and model file path
+
+** Change the primery and secondary comnfigration file path and model file path
