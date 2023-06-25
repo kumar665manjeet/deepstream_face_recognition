@@ -72,7 +72,7 @@ GST_CAPS_FEATURES_NVMM = "memory:NVMM"
 MIN_CONFIDENCE = 0.3
 MAX_CONFIDENCE = 0.4
 
-DATASET_PATH = '/home/manjeet/deepstream-face-recognition/app/models/_data_embeddings.npz'
+DATASET_PATH = '/deepstream-face-recognition/app/models/_data_embeddings.npz'
 
 faces_embeddings, labels = load_dataset(DATASET_PATH)
 
@@ -442,8 +442,8 @@ def main(args):
     streammux.set_property('height', 1080)
     streammux.set_property('batch-size', number_sources)
     streammux.set_property('batched-push-timeout', 4000000)
-    pgie.set_property('config-file-path', "/home/manjeet/deepstream-face-recognition/app/configs/config_infer_primary_peoplenet.txt")
-    sgie1.set_property('config-file-path', "/home/manjeet/deepstream-face-recognition/app/configs/classifier_config.txt")
+    pgie.set_property('config-file-path', "/deepstream-face-recognition/app/configs/config_infer_primary_peoplenet.txt")
+    sgie1.set_property('config-file-path', "/deepstream-face-recognition/app/configs/classifier_config.txt")
     pgie_batch_size = pgie.get_property("batch-size")
     if (pgie_batch_size != number_sources):
         print("WARNING: Overriding infer-config batch-size", pgie_batch_size, " with number of sources ",
@@ -470,7 +470,7 @@ def main(args):
 
     #Set properties of tracker
     config = configparser.ConfigParser()
-    config.read('/home/manjeet/deepstream-face-recognition/app/configs/dstest2_tracker_config.txt')
+    config.read('/deepstream-face-recognition/app/configs/dstest2_tracker_config.txt')
     config.sections()
 
     for key in config['tracker']:

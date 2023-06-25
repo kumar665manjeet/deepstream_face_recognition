@@ -35,7 +35,7 @@ from facenet_utils import load_dataset, normalize_vectors, predict_using_classif
 
 import pyds
 
-DATASET_PATH = '/home/manjeet/deepstream-face-recognition/app/models/single_face__embeddings.npz'
+DATASET_PATH = '/deepstream-face-recognition/app/models/single_face__embeddings.npz'
 
 faces_embeddings, labels = load_dataset(DATASET_PATH)
 
@@ -48,12 +48,12 @@ id_name_dic = {}
 def osd_sink_pad_buffer_probe(pad,info,u_data):
     face_thres = 1.0 
     
-    # with np.load('/home/manjeet/deepstream-face-recognition/app/models/single_face__embeddings.npz') as embeddings:
+    # with np.load('/deepstream-face-recognition/app/models/single_face__embeddings.npz') as embeddings:
     #     for key in embeddings.keys():
     #         emb_array.append(embeddings[key])
 
 
-    # with open("/home/manjeet/deepstream-face-recognition/app/models/names.txt") as f:
+    # with open("/deepstream-face-recognition/app/models/names.txt") as f:
     #     lines = f.readlines()
     #     for line in lines:
     #         names.append(line.split()[0])        
@@ -324,12 +324,12 @@ def main(args):
     streammux.set_property('batch-size', 1)
     streammux.set_property('live-source', 1)
     streammux.set_property('batched-push-timeout', 4000000)
-    pgie.set_property('config-file-path', "/home/manjeet/deepstream-face-recognition/app/configs/config_infer_primary_peoplenet.txt")
-    sgie1.set_property('config-file-path', "/home/manjeet/deepstream-face-recognition/app/configs/classifier_config.txt")
+    pgie.set_property('config-file-path', "/deepstream-face-recognition/app/configs/config_infer_primary_peoplenet.txt")
+    sgie1.set_property('config-file-path', "/deepstream-face-recognition/app/configs/classifier_config.txt")
 
     #Set properties of tracker
     config = configparser.ConfigParser()
-    config.read('/home/manjeet/deepstream-face-recognition/app/configs/dstest2_tracker_config.txt')
+    config.read('/deepstream-face-recognition/app/configs/dstest2_tracker_config.txt')
     config.sections()
 
     for key in config['tracker']:
@@ -443,23 +443,7 @@ def main(args):
     # cleanup
     pipeline.set_state(Gst.State.NULL)
 
-# def parse_args():
-#     parser = argparse.ArgumentParser(description='Application Help')
-#     # parser.add_argument("-i", "--input", default="/dev/video0",
-#     #               help="Path to v4l2 device path such as /dev/video0")
 
-#     args = parser.parse_args()
-
-#     global codec
-#     global bitrate
-#     # global stream_path
-#     global past_tracking
-
-#     codec = "H264"
-#     bitrate = 8000000
-#     # stream_path = args.input
-#     past_tracking = 0
-#     return 0
     
 if __name__ == '__main__':
     # parse_args()
